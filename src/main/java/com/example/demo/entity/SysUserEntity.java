@@ -1,10 +1,14 @@
 package com.example.demo.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -13,6 +17,7 @@ import java.util.Date;
  * @email sunlightcs@gmail.com
  * @date 2018-09-03 18:04:52
  */
+@Data
 @TableName("sys_user")
 public class SysUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -41,110 +46,18 @@ public class SysUserEntity implements Serializable {
 	/**
 	 * 
 	 */
-	private Date lastloginDate;
+	private Instant lastloginDate;
 	/**
 	 * 
 	 */
-	private Date createdDate;
+	private Instant createdDate;
 	/**
 	 * 
 	 */
-	private Date updatedDate;
+	private Instant updatedDate;
 
-	/**
-	 * 设置：
-	 */
-	public void setOid(Integer oid) {
-		this.oid = oid;
-	}
-	/**
-	 * 获取：
-	 */
-	public Integer getOid() {
-		return oid;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	/**
-	 * 获取：
-	 */
-	public String getUsername() {
-		return username;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	/**
-	 * 获取：
-	 */
-	public String getPassword() {
-		return password;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-	/**
-	 * 获取：
-	 */
-	public String getSalt() {
-		return salt;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setUserType(Integer userType) {
-		this.userType = userType;
-	}
-	/**
-	 * 获取：
-	 */
-	public Integer getUserType() {
-		return userType;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setLastloginDate(Date lastloginDate) {
-		this.lastloginDate = lastloginDate;
-	}
-	/**
-	 * 获取：
-	 */
-	public Date getLastloginDate() {
-		return lastloginDate;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	/**
-	 * 获取：
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-	/**
-	 * 设置：
-	 */
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-	/**
-	 * 获取：
-	 */
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
+	@TableField(exist = false)
+	private List<String> rolenamelist;
+	@TableField(exist = false)
+	private List<String> permissionnamelist;
 }

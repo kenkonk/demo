@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.demo.entity.MallOrderEntity;
+import com.example.demo.entity.SysUserEntity;
 import com.example.demo.service.MallOrderService;
+import com.example.demo.service.SysUserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.*;
 public class MallOrderController {
     @Autowired
     private MallOrderService mallOrderService;
+    @Autowired
+    private SysUserService sysUserService;
 
     /**
      * 列表
@@ -30,13 +36,14 @@ public class MallOrderController {
     //@RequiresPermissions("generator:mallorder:list")
     @ResponseBody
     public String list(@RequestParam Map<String, Object> params){
-        MallOrderEntity entity = mallOrderService.selectById(7);
-        List<Long> list = new ArrayList<>();
-        list.add(7l);
-        list.add(8l);
-        list.add(1l);
-        List<MallOrderEntity> mallOrderEntities = (List<MallOrderEntity>) mallOrderService.selectBatchIds(list);
-        System.out.println(mallOrderEntities.toString());
+        SysUserEntity sysUserEntity = sysUserService.getByUsername("leo");
+//        MallOrderEntity entity = mallOrderService.selectById(7);
+//        List<Long> list = new ArrayList<>();
+//        list.add(7l);
+//        list.add(8l);
+//        list.add(1l);
+//        List<MallOrderEntity> mallOrderEntities = (List<MallOrderEntity>) mallOrderService.selectBatchIds(list);
+       System.out.println(sysUserEntity.toString());
         return "ok";
     }
 

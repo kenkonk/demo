@@ -15,6 +15,7 @@ import java.util.Map;
  * @date 2018-09-03 18:04:52
  */
 public interface SysUserService extends IService<SysUserEntity> {
-
+    SysUserEntity getByUsername(String username);
+    SysUserEntity testget(String username);
 }
 
