@@ -1,7 +1,6 @@
-package com.example.demo.shiro;
+package com.example.demo.config.shiro;
 
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.example.demo.entity.SysUserEntity;
 import com.example.demo.service.SysPermissionService;
 import com.example.demo.service.SysRoleService;

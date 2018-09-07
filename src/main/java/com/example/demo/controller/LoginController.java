@@ -6,6 +6,8 @@ import com.example.demo.service.SysUserService;
 import com.example.demo.utils.JWTUtil;
 import com.example.demo.utils.ResponseBean;
 import com.example.demo.utils.StringTool;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -18,13 +20,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
+@Api(description = "用户登录")
 @Slf4j
 @RestController
 public class LoginController {
 
     @Autowired
     private SysUserService userService;
-
+    @ApiOperation(value = "登录接口", notes = "登录接口")
     @PostMapping("/login")
     public ResponseBean login(@RequestParam("username") String username,
                               @RequestParam("password") String password) {
@@ -34,10 +37,11 @@ public class LoginController {
             ResponseBean responseBean = new ResponseBean();
             responseBean.setCode(200);
             responseBean.setMsg("Login success");
-            HashMap<String,String> tokenmap = new HashMap<>() ;
+            HashMap<String, String> tokenmap = new HashMap<>();
             String token = JWTUtil.sign(username);
-            tokenmap.put("token",token);
+            tokenmap.put("token", token);
             responseBean.setData(tokenmap);
+            log.warn("用户: " + username + " 登录成功");
             return responseBean;
         } else {
             throw new UnauthorizedException();
@@ -53,7 +57,7 @@ public class LoginController {
 //        } else {
 //            return new ResponseBean(200, "You are guest", null);
 //        }
-                   return new ResponseBean(200, "You are guest", null);
+        return new ResponseBean(200, "You are guest", null);
 
     }
 
