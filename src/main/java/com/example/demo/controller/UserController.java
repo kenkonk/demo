@@ -77,7 +77,7 @@ public class UserController {
     }
 
     /**
-     * 删除
+     * 删除dddd
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Integer[] ids){
