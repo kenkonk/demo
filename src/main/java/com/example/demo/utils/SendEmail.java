@@ -7,8 +7,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Calendar;
-import java.util.Date;
+
 /**
  * 发送只带存文本的邮件
  */
